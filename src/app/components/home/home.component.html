@@ -1,0 +1,22 @@
+<div *ngIf="user" class="login-info">
+  <span *ngIf="user.email">({{user.email}})</span>
+  <button (click)="logout()">Logout</button>
+</div>
+<div>
+  <h1 class="page-title">
+    Home
+  </h1>
+  <div class="home-project-section">
+    <ul class="home-project-list" *ngIf="user && user.tasks">
+      <li *ngFor="let task of user.tasks">
+        <a [routerLink]="['/project/',task.id]">
+          <span *ngIf="!task.name" class="loading-info">loading task info...</span>
+          <span *ngIf="task.name">{{task.name}}</span>
+          <span *ngIf="task.priority">{{task.name}}</span>
+          <span *ngIf="task.dueDate">{{task.name | date}}</span>
+        </a>
+      </li>
+    </ul>
+    <a [routerLink]="['/task/new']">New Task</a>
+  </div>
+</div>
