@@ -70,6 +70,14 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  private deleteTask(item: Task) {
+    this.user.tasks.splice(this.user.tasks.indexOf(item), 1);
+    const tasks = this.user.tasks.map((value: Task) => {
+      return { key: value.key };
+    })
+    this.userService.update(this.user.id, {tasks: tasks});
+  }
+
   public showNewTaskForm() {
     this.showingNewTaskForm = true;
   }

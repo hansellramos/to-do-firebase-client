@@ -24,4 +24,8 @@ export class TaskService {
     return this.db.list(this.ref).push(item);
   }
 
+  public delete(item: Task): firebase.Promise<void> {
+    return this.db.object(this.ref + '/' + item.key).remove();
+  }
+
 }
