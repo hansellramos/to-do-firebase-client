@@ -9,7 +9,7 @@ export const environment = {
     apiKey: 'AIzaSyBhEG0td86dPtkQzDTyRc1ytnj1tlvoSr8',
     authDomain: 'to-do-bfb95.firebaseapp.com',
     databaseURL: 'https://to-do-bfb95.firebaseio.com',
-    projectId: 'to-do-bfb95 ',
+    projectId: 'to-do-bfb95',
     storageBucket: '',
     messagingSenderId: '760104378145'
   }

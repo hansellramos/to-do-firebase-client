@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 
+import * as firebase from 'firebase/app';
+
 import { AngularFireDatabase, FirebaseListObservable, FirebaseObjectObservable } from 'angularfire2/database';
 
 import { User } from '../models/user';
@@ -19,6 +21,10 @@ export class UserService {
 
   public one(uid: string): FirebaseObjectObservable<User> {
     return this.db.object(this.ref + '/' + uid);
+  }
+
+  public update(uid: string, item: object): firebase.Promise<void> {
+    return this.db.object(this.ref + '/' + uid).update(item);
   }
 
 }

@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
 
   public user: User;
   public isAuthenticated = false;
+  public showingNewTaskForm = false;
 
   constructor(
     private authService: AuthService
@@ -38,32 +39,43 @@ export class HomeComponent implements OnInit {
       const user = this.authService.getCurrentUser();
       this.userService.one(user.uid).subscribe(remoteUser => {
         if (remoteUser) {
-          this.user = new User(user.uid, remoteUser.email);
+          this.user = new User(user.uid, remoteUser.email, remoteUser.tasks);
+          localStorage.setItem('uid', user.uid);
           this.getUserTasks();
         }
       });
     } else {
       this.user = null;
+      localStorage.removeItem('uid');
     }
   }
 
   public getUserTasks() {
     if (this.user.tasks && this.user.tasks.length > 0) {
-      for (const p of this.user.tasks) {
-        this.taskService.one(p.id)
-          .subscribe((task: Task) => {
-            this.replaceProject(task.id, task);
+      for (const task of this.user.tasks) {
+        this.taskService.one(task.key)
+          .subscribe((item: Task) => {
+            this.replaceProject(task.key, item);
           });
       }
     }
   }
 
-  private replaceProject(id: string, task: Task) {
+  private replaceProject(key: string, task: Task) {
     for (const index in this.user.tasks) {
-      if (this.user.tasks[index].id === id) {
+      if (this.user.tasks[index].key === key) {
+        task.key = key;
         this.user.tasks[index] = task;
       }
     }
+  }
+
+  public showNewTaskForm() {
+    this.showingNewTaskForm = true;
+  }
+
+  public hideNewTaskForm() {
+    this.showingNewTaskForm = false;
   }
 
   public logout() {
