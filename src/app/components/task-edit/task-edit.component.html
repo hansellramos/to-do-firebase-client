@@ -1,0 +1,28 @@
+<h2>
+  Edit Task {{task.name}}
+</h2>
+<form (submit)="save(); $event.stopPropagation();">
+  <div>
+    <label>Name</label>
+    <input type="text" name="name" [(ngModel)]="editableTask.name" required="true">
+  </div>
+  <div>
+    <label>Due Date</label>
+    <input type="date" name="dueDate" [(ngModel)]="editableTask.dueDate" required>
+  </div>
+  <div>
+    <ul>
+      <li>
+        <label>1</label>
+        <input type="radio" value="1" name="priority" [(ngModel)]="editableTask.priority" required></li>
+      <li>
+        <label>2</label>
+        <input type="radio" value="2" name="priority" [(ngModel)]="editableTask.priority" required></li>
+      <li>
+        <label>3</label>
+        <input type="radio" value="3" name="priority" [(ngModel)]="editableTask.priority" required></li>
+    </ul>
+  </div>
+  <input type="submit" value="Save">
+  <input type="button" value="Cancel" (click)="cancel()">
+</form>

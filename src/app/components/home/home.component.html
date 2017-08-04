@@ -16,9 +16,11 @@
           <span *ngIf="task.dueDate">{{task.dueDate | date}}</span>
         </a>
         <button (click)="deleteTask(task)">Delete</button>
+        <button (click)="editTask(task)">Edit</button>
       </li>
     </ul>
     <app-task-new *ngIf="showingNewTaskForm" (onCancel)="hideNewTaskForm()"></app-task-new>
+    <app-task-edit *ngIf="selectedTask" [task]="selectedTask" (onCancel)="cancelEditTask()"></app-task-edit>
     <button *ngIf="!showingNewTaskForm" type="button" (click)="showNewTaskForm()">New Task</button>
   </div>
 </div>

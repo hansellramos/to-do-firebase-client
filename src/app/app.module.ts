@@ -24,6 +24,7 @@ import { UserService } from './services/user.service';
 import { TaskService } from './services/task.service';
 import { TaskNewComponent } from './components/task-new/task-new.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
+import { TaskEditComponent } from './components/task-edit/task-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { TaskDetailComponent } from './components/task-detail/task-detail.compon
     , HomeComponent
     , LoginComponent
     , RegisterComponent
-    , Error404Component, TaskNewComponent, TaskDetailComponent
+    , Error404Component, TaskNewComponent, TaskDetailComponent, TaskEditComponent
   ],
   imports: [
       BrowserModule

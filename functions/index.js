@@ -30,8 +30,22 @@ exports.onTaskCreated = functions.database.ref('/tasks/{taskId}').onCreate(event
   return event.data.ref.update({created: timestamp, updated: timestamp});
 });
 
-// exports.onTaskUpdate = functions.database.ref('/tasks/{taskId}').onWrite(event => {
-//   var timestamp = new Date().getTime();
-//   return event.data.ref.update({updated: timestamp});
-// });
+exports.onTaskUpdate = functions.database.ref('/tasks/{taskId}').onUpdate(event => {
+  var current = {
+      priority: event.data.current.child('priority').val()
+    , name: event.data.current.child('name').val()
+    , dueDate: event.data.current.child('name').val()
+  };
+  var previous = {
+    priority: event.data.previous.child('priority').val()
+    , name: event.data.previous.child('name').val()
+    , dueDate: event.data.previous.child('name').val()
+  }
+  if (JSON.stringify(previous)!==JSON.stringify(current)) {
+    var timestamp = new Date().getTime();
+    return event.data.ref.update({updated: timestamp});
+  } else {
+    return;
+  }
+});
 

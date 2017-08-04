@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   public user: User;
   public isAuthenticated = false;
   public showingNewTaskForm = false;
+  public selectedTask: Task;
 
   constructor(
     private authService: AuthService
@@ -34,7 +35,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  public updateCurrentUserInfo() {
+  updateCurrentUserInfo() {
     if (this.isAuthenticated) {
       const user = this.authService.getCurrentUser();
       this.userService.one(user.uid).subscribe(remoteUser => {
@@ -50,7 +51,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  public getUserTasks() {
+  getUserTasks() {
     if (this.user.tasks && this.user.tasks.length > 0) {
       for (const task of this.user.tasks) {
         this.taskService.one(task.key)
@@ -70,7 +71,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  private deleteTask(item: Task) {
+  deleteTask(item: Task) {
     this.user.tasks.splice(this.user.tasks.indexOf(item), 1);
     const tasks = this.user.tasks.map((value: Task) => {
       return { key: value.key };
@@ -78,15 +79,23 @@ export class HomeComponent implements OnInit {
     this.userService.update(this.user.id, {tasks: tasks});
   }
 
-  public showNewTaskForm() {
+  showNewTaskForm() {
     this.showingNewTaskForm = true;
   }
 
-  public hideNewTaskForm() {
+  hideNewTaskForm() {
     this.showingNewTaskForm = false;
   }
 
-  public logout() {
+  editTask(task: Task) {
+    this.selectedTask = task;
+  }
+
+  cancelEditTask() {
+    this.selectedTask = null;
+  }
+
+  logout() {
     this.authService.logout()
       .then(() => {
         this.router.navigate(['/login']);
