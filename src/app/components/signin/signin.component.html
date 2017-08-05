@@ -4,9 +4,10 @@
     <h2 class='signin-title text-center'>Sign In</h2>
     <hr>
     <form class="form-signin" (submit)="signInWithEmailAndPassword()">
-      <span id="reauth-email" class="reauth-email"></span>
+      <span class="reauth-email"></span>
       <p class="input-title">Email</p>
       <input type="text" id="inputEmail" class="signin-box" placeholder="Your e-mail" name="email" required autofocus [(ngModel)]="user.email">
+      <span class="reauth-email"></span>
       <p class="input-title">Password</p>
       <input type="password" id="inputPassword" class="signin-box" placeholder="******" name="password" required [(ngModel)]="password">
       <button class="btn btn-lg btn-primary" type="submit">Sign In</button>
