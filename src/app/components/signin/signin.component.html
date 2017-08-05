@@ -10,6 +10,7 @@
       <p class="input_title">Password</p>
       <input type="password" id="inputPassword" class="login_box" placeholder="******" name="password" required [(ngModel)]="password">
       <button class="btn btn-lg btn-primary" type="submit">Sign In</button>
+      <a [routerLink]="['/forgot-password']">Forgot Password?</a>
       <hr />
       <span class="input_title">Or Sign In with</span>
       <button class="btn btn-lg btn-default" (click)="signInWithGoogle()"><i class="fa fa-google fa-2x" style="color: #db3236;"></i></button>
@@ -25,4 +26,3 @@
     <span class="m-md input_title">Developed by Hansel Ramos &copy; 2017</span>
   </div>
 </div>
-

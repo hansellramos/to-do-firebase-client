@@ -70,6 +70,14 @@ export class AuthService {
     return this.auth.auth.signInWithEmailAndPassword(email, password);
   }
 
+  public sendPasswordResetEmail(user: User): firebase.Promise<void> {
+    return this.auth.auth.sendPasswordResetEmail(user.email);
+  }
+
+  public verifyPasswordResetCode(code: string): firebase.Promise<void> {
+    return this.auth.auth.verifyPasswordResetCode(code);
+  }
+
   public isAuth() {
     return this.auth.auth.currentUser !== null;
   }

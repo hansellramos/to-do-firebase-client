@@ -15,6 +15,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { SignInComponent } from './components/signin/signin.component';
 import { SignUpComponent } from './components/signup/signup.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { Error404Component } from './components/errors/error404/error404.component';
 
 import { Routing } from './app.routing';
@@ -33,7 +34,7 @@ import { TaskEditComponent } from './components/task-edit/task-edit.component';
     , SignInComponent
     , SignUpComponent
     , TaskNewComponent, TaskDetailComponent, TaskEditComponent
-    , Error404Component
+    , Error404Component, ForgotPasswordComponent
   ],
   imports: [
       BrowserModule
