@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 
-import {Promise, reject, resolve} from 'q';
-
 import * as firebase from 'firebase/app';
 
 import { AngularFireAuth } from 'angularfire2/auth';
 import {AngularFireDatabase} from 'angularfire2/database';
 
-import { Observable } from 'rxjs/Observable';
 import {Router} from '@angular/router';
+import {User} from '../models/user';
+import {UserService} from './user.service';
 
 @Injectable()
 export class AuthService {
@@ -22,49 +21,61 @@ export class AuthService {
   get id(): string { return this.authenticated ? this.user.uid : ''; }
 
   constructor(
-      public afAuth: AngularFireAuth
+      public auth: AngularFireAuth
     , private db: AngularFireDatabase
+    , private userService: UserService
     , private router: Router
   ) {
-    this.afAuth.authState.subscribe(user => this.user = user);
+    this.auth.authState.subscribe(user => this.user = user);
   }
 
-  public logout(): firebase.Promise<any> {
-    return this.afAuth.auth.signOut();
+  public signOut(): firebase.Promise<any> {
+    return this.auth.auth.signOut();
   }
 
-  public loginWithGoogle(): firebase.Promise<any> {
-    return this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+  public signUpWithEmailAndPassword(user: User, password: string): firebase.Promise<any> {
+    return this.auth.auth.createUserWithEmailAndPassword(user.email, password)
+      .then(response => {
+        this.userService.one(response.uid).take(1).toPromise()
+          .then((remoteUser) => {
+            if (!remoteUser.$exists()) {
+              this.userService.update(response.uid, user)
+                .then(() => { this.router.navigate(['/signin']); })
+                .catch(err => console.log('ERRROR @ AuthService#signup()#createNewUser :', err));
+            }
+          });
+      })
+      .catch(err => console.log('ERRROR @ AuthService#signup() :', err))
+  }
+
+  public signInWithGoogle(): firebase.Promise<any> {
+    return this.auth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(response => {
         this.router.navigate(['/home']);
         this.db.object(`/users/${response.user.uid}`)
           .subscribe(user => {
             if (!user.$exists()) {
-              const {email, uid} = response.user;
+              const {email, id} = response.user;
               this.db.object(`/users/${response.user.uid}`).set({
                 email
-                , uid
+                , id
               })
             }
           });
       })
-      .catch(err => console.log('ERRROR @ AuthService#signIn() :', err));
+      .catch(err => console.log('ERRROR @ AuthService#signInWithGoogle() :', err));
   }
 
-  public loginWithEmailAndPassword(email: string, password: string) {
-    return Promise((resolve, reject) => {
-      this.afAuth.auth.signInWithEmailAndPassword(email, password)
-        .then(userData => resolve(userData),
-          err => reject(err));
-    });
+  public signInWithEmailAndPassword(email: string, password: string): firebase.Promise<void> {
+    return this.auth.auth.signInWithEmailAndPassword(email, password);
   }
 
   public isAuth() {
-    return this.afAuth.auth.currentUser !== null;
+    return this.auth.auth.currentUser !== null;
   }
 
   public getCurrentUser() {
-    return this.afAuth.auth.currentUser;
+    return this.auth.auth.currentUser;
   }
 
 }

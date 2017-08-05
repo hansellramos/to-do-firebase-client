@@ -23,6 +23,10 @@ export class UserService {
     return this.db.object(this.ref + '/' + uid);
   }
 
+  public create(item: User): firebase.Promise<void> {
+    return this.db.list(this.ref).push(item);
+  }
+
   public update(uid: string, item: object): firebase.Promise<void> {
     return this.db.object(this.ref + '/' + uid).update(item);
   }

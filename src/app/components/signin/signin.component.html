@@ -1,0 +1,11 @@
+<div>
+  <form (submit)="signInWithEmailAndPassword()">
+    <input type='email' name="email" required placeholder="Email" [(ngModel)]="user.email">
+    <input type='password' name="password" required placeholder="Password" [(ngModel)]="password">
+    <button type="submit">Sign In</button>
+  </form>
+</div>
+<hr />
+<button (click)="signInWithGoogle()">Sign In with Google</button>
+<hr />
+<a [routerLink]="['/signup']">Sign Up</a>

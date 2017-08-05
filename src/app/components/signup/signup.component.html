@@ -1,0 +1,10 @@
+<div>
+  <form (submit)="signup()">
+    <input type='email' name="email" required placeholder="Email" [(ngModel)]="user.email">
+    <input type='password' name="password" required placeholder="Password" [(ngModel)]="password">
+    <input type='password' name="confirmPassword" required placeholder="Confirm Password" [(ngModel)]="confirmPassword">
+    <button type="submit">Sign Up</button>
+  </form>
+</div>
+<hr />
+<a [routerLink]="'/signin'">Sign In</a>

@@ -13,8 +13,8 @@ import { AuthGuard } from './guards/auth.guard';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
-import { LoginComponent } from './components/login/login.component';
-import { RegisterComponent } from './components/register/register.component';
+import { SignInComponent } from './components/signin/signin.component';
+import { SignUpComponent } from './components/signup/signup.component';
 import { Error404Component } from './components/errors/error404/error404.component';
 
 import { Routing } from './app.routing';
@@ -30,9 +30,10 @@ import { TaskEditComponent } from './components/task-edit/task-edit.component';
   declarations: [
       AppComponent
     , HomeComponent
-    , LoginComponent
-    , RegisterComponent
-    , Error404Component, TaskNewComponent, TaskDetailComponent, TaskEditComponent
+    , SignInComponent
+    , SignUpComponent
+    , TaskNewComponent, TaskDetailComponent, TaskEditComponent
+    , Error404Component
   ],
   imports: [
       BrowserModule

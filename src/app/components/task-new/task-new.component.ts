@@ -25,20 +25,20 @@ export class TaskNewComponent implements OnInit {
   }
 
   save() {
-    this.taskService.save(this.task)
+    this.taskService.create(this.task)
       .then((savedItem: any) => {
-        this.task.key = savedItem.key;
+        this.task.id = savedItem.key;
         this.userService.one(localStorage.uid).take(1).toPromise()
           .then((remoteUser) => {
             if (remoteUser) {
               const tasks = remoteUser.tasks ? remoteUser.tasks : [];
-              tasks.push({key: savedItem.key});
+              tasks.push({id: savedItem.key});
               this.userService.update(localStorage.uid, {tasks: tasks})
-                .then(result => {
+                .then(() => {
                   this.clear();
                 })
-                .catch(error => {
-                  alert('Error to save in user');
+                .catch(() => {
+                  alert('Error to create user');
                 });
             }
           })
@@ -51,7 +51,7 @@ export class TaskNewComponent implements OnInit {
   }
 
   clear() {
-    this.task = new Task(localStorage.uid);
+    this.task = new Task('', localStorage.uid);
   }
 
   cancel() {

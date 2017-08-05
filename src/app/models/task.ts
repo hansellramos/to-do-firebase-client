@@ -1,23 +1,23 @@
 export class Task {
 
+  public id: string;
   public owner: string;
   public name: string;
   public priority: number;
   public dueDate: Date;
-  public key: string;
 
   constructor (
-      owner: string
+      id: string = ''
+    , owner: string = ''
     , name: string = ''
     , priority: number = 1
     , dueDate: Date = null
-    , key: string = ''
   ) {
+    this.id = id;
     this.owner = owner;
     this.name = name;
     this.priority = priority;
     this.dueDate = dueDate;
-    this.key = key;
   }
 
 }

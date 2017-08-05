@@ -20,16 +20,16 @@ export class TaskService {
     return this.db.object(this.ref + '/' + uid);
   }
 
-  public save(item: Task): firebase.Promise<void> {
+  public create(item: Task): firebase.Promise<void> {
     return this.db.list(this.ref).push(item);
   }
 
   public update(item: Task): firebase.Promise<void> {
-    return this.db.object(this.ref + '/' + item.key).update(item);
+    return this.db.object(this.ref + '/' + item.id).update(item);
   }
 
   public delete(item: Task): firebase.Promise<void> {
-    return this.db.object(this.ref + '/' + item.key).remove();
+    return this.db.object(this.ref + '/' + item.id).remove();
   }
 
 }

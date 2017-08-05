@@ -6,9 +6,12 @@ export class User {
   public email: string;
   public tasks: Array<Task>;
 
-  constructor(id: string, email?: string, tasks?: Array<Task>) {
+  constructor(
+      id: string = ''
+    , email: string = ''
+    , tasks?: Array<Task>) {
     this.id = id;
     this.email = email;
-    this.tasks = tasks;
+    this.tasks = tasks ? tasks : [];
   }
 }

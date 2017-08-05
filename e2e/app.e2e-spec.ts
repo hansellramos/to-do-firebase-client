@@ -1,6 +1,6 @@
 import { LoginFirebaseAngular2Page } from './app.po';
 
-describe('login-firebase-angular2 App', () => {
+describe('To-Do Firebase client', () => {
   let page: LoginFirebaseAngular2Page;
 
   beforeEach(() => {

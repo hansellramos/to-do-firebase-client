@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authService.afAuth.auth.onAuthStateChanged(user => {
+    this.authService.auth.auth.onAuthStateChanged(user => {
         this.isAuthenticated = !!user;
         this.updateCurrentUserInfo();
       }
@@ -54,18 +54,17 @@ export class HomeComponent implements OnInit {
   getUserTasks() {
     if (this.user.tasks && this.user.tasks.length > 0) {
       for (const task of this.user.tasks) {
-        this.taskService.one(task.key)
+        this.taskService.one(task.id)
           .subscribe((item: Task) => {
-            this.replaceProject(task.key, item);
+            this.replaceProject(task.id, item);
           });
       }
     }
   }
 
-  private replaceProject(key: string, task: Task) {
+  private replaceProject(id: string, task: Task) {
     for (const index in this.user.tasks) {
-      if (this.user.tasks[index].key === key) {
-        task.key = key;
+      if (this.user.tasks[index].id === id) {
         this.user.tasks[index] = task;
       }
     }
@@ -74,8 +73,8 @@ export class HomeComponent implements OnInit {
   deleteTask(item: Task) {
     this.user.tasks.splice(this.user.tasks.indexOf(item), 1);
     const tasks = this.user.tasks.map((value: Task) => {
-      return { key: value.key };
-    })
+      return { id: value.id };
+    });
     this.userService.update(this.user.id, {tasks: tasks});
   }
 
@@ -95,10 +94,10 @@ export class HomeComponent implements OnInit {
     this.selectedTask = null;
   }
 
-  logout() {
-    this.authService.logout()
+  signOut() {
+    this.authService.signOut()
       .then(() => {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/signin']);
       });
   }
 

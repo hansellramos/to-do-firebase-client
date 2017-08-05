@@ -1,6 +1,6 @@
-<div *ngIf="user" class="login-info">
+<div *ngIf="user">
   <span *ngIf="user.email">({{user.email}})</span>
-  <button (click)="logout()">Logout</button>
+  <button (click)="signOut()">Sign Out</button>
 </div>
 <div>
   <h1>
@@ -9,7 +9,7 @@
   <div>
     <ul *ngIf="user && user.tasks">
       <li *ngFor="let task of user.tasks">
-        <a [routerLink]="['/task/',task.key]">
+        <a [routerLink]="['/task/',task.id]">
           <span *ngIf="!task.name" class="loading-info">loading task info...</span>
           <span *ngIf="task.priority">{{task.priority}}</span>
           <span *ngIf="task.name">{{task.name}}</span>

@@ -21,12 +21,12 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    return this.authService.afAuth.authState
+    return this.authService.auth.authState
       .take(1)
       .map(authState => !!authState)
       .do(authenticated => {
         if (!authenticated) {
-          this.router.navigate(['/login']);
+          this.router.navigate(['/signin']);
         }
       });
   }
