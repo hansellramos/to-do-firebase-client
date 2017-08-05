@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { SignInComponent } from './components/signin/signin.component';
 import { SignUpComponent } from './components/signup/signup.component';
+import {ForgotPasswordComponent} from './components/forgot-password/forgot-password.component';
 import { TaskNewComponent } from './components/task-new/task-new.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 
@@ -14,6 +15,7 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent, canActivate: [ AuthGuard ] }
   , { path: 'signup', component: SignUpComponent }
   , { path: 'signin', component: SignInComponent }
+  , { path: 'forgot-password', component: ForgotPasswordComponent }
   , { path: 'task/new', component: TaskNewComponent }
   , { path: 'task/:id', component: TaskDetailComponent }
   , { path: '', redirectTo: '/signin', pathMatch: 'full' }
