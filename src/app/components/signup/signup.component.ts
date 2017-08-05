@@ -23,6 +23,10 @@ export class SignUpComponent {
     this.confirmPassword = '';
   }
 
+  public signUpWithGoogle(): void {
+    this.authService.signInWithGoogle();
+  }
+
   signup() {
     this.authService.signUpWithEmailAndPassword(this.user, this.password)
       .then(() => {
