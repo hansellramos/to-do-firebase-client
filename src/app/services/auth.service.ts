@@ -41,11 +41,11 @@ export class AuthService {
             if (!remoteUser.$exists()) {
               this.userService.update(response.uid, user)
                 .then(() => { this.router.navigate(['/signin']); })
-                .catch(err => console.log('ERRROR @ AuthService#signup()#createNewUser :', err));
+                .catch(err => console.log('ERRROR @ AuthService#signUp()#createNewUser :', err));
             }
           });
       })
-      .catch(err => console.log('ERRROR @ AuthService#signup() :', err))
+      .catch(err => console.log('ERRROR @ AuthService#signUp() :', err))
   }
 
   public signInWithGoogle(): firebase.Promise<any> {

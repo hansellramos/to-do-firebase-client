@@ -23,7 +23,11 @@ export class SignUpComponent {
     this.confirmPassword = '';
   }
 
-  signup() {
+  public signUpWithGoogle(): void {
+    this.authService.signInWithGoogle();
+  }
+
+  signUp() {
     this.authService.signUpWithEmailAndPassword(this.user, this.password)
       .then(() => {
         this.router.navigate(['/home']);
