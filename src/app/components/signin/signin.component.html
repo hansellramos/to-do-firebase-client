@@ -1,21 +1,21 @@
 <div class="container">
   <h1 class="welcome text-center">Welcome to <br> To-Do App</h1>
   <div class="card card-container">
-    <h2 class='login_title text-center'>Sign In</h2>
+    <h2 class='signin-title text-center'>Sign In</h2>
     <hr>
     <form class="form-signin" (submit)="signInWithEmailAndPassword()">
       <span id="reauth-email" class="reauth-email"></span>
-      <p class="input_title">Email</p>
-      <input type="text" id="inputEmail" class="login_box" placeholder="Your e-mail" name="email" required autofocus [(ngModel)]="user.email">
-      <p class="input_title">Password</p>
-      <input type="password" id="inputPassword" class="login_box" placeholder="******" name="password" required [(ngModel)]="password">
+      <p class="input-title">Email</p>
+      <input type="text" id="inputEmail" class="signin-box" placeholder="Your e-mail" name="email" required autofocus [(ngModel)]="user.email">
+      <p class="input-title">Password</p>
+      <input type="password" id="inputPassword" class="signin-box" placeholder="******" name="password" required [(ngModel)]="password">
       <button class="btn btn-lg btn-primary" type="submit">Sign In</button>
       <a [routerLink]="['/forgot-password']">Forgot Password?</a>
       <hr />
-      <span class="input_title">Or Sign In with</span>
+      <span class="input-title">Or Sign In with</span>
       <button class="btn btn-lg btn-default" (click)="signInWithGoogle()"><i class="fa fa-google fa-2x" style="color: #db3236;"></i></button>
       <hr />
-      <span class="input_title">Or</span>
+      <span class="input-title">Or</span>
       <a [routerLink]="['/signup']">
         <button type="button" class="btn btn-default btn-lg" >Sign Up</button>
       </a>
@@ -23,6 +23,6 @@
   </div>
   <div class="card card-container text-center">
     <br />
-    <span class="m-md input_title">Developed by Hansel Ramos &copy; 2017</span>
+    <span class="m-md input-title">Developed by Hansel Ramos &copy; 2017</span>
   </div>
 </div>
