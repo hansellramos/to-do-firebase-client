@@ -38,7 +38,9 @@ hr{
 
 .card-container.card {
   max-width: 350px;
-
+}
+.home .card-container.card {
+  max-width: 800px;
 }
 
 .btn {
@@ -49,8 +51,38 @@ hr{
   user-select: none;
   cursor: pointer;
   border-radius:0;
-  height: 55px;
   margin-bottom:10px;
+}
+.btn-circle {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.428571429;
+  border-radius: 15px;
+}
+.btn-circle.btn-lg {
+  width: 50px;
+  height: 50px;
+  padding: 10px 16px;
+  font-size: 18px;
+  line-height: 1.33;
+  border-radius: 25px;
+}
+.btn-circle.btn-xl {
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 35px;
+}
+
+.form-signin .btn,
+.form-signup .btn
+{
+  height: 55px;
 }
 
 /*
@@ -182,4 +214,81 @@ hr{
 .forgot-password:active,
 .forgot-password:focus{
   color: rgb(12, 97, 33);
+}
+
+.container.home .card.card-container {
+  margin-top: 80px;
+}
+
+.home .navbar-right{
+  margin-right: 0px !important;
+}
+
+.home .task-detail {
+  cursor: pointer;
+}
+
+.home .task-detail .task-name {
+  color: #ff5722;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.checkbox label:after,
+.radio label:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.checkbox .cr,
+.radio .cr {
+  position: relative;
+  display: inline-block;
+  border: 1px solid #a9a9a9;
+  border-radius: .25em;
+  width: 1.3em;
+  height: 1.3em;
+  float: left;
+  margin-right: .5em;
+}
+
+.radio .cr {
+  border-radius: 50%;
+}
+
+.checkbox .cr .cr-icon,
+.radio .cr .cr-icon {
+  position: absolute;
+  font-size: .8em;
+  line-height: 0;
+  top: 50%;
+  left: 20%;
+}
+
+.radio .cr .cr-icon {
+  margin-left: 0.04em;
+}
+
+.checkbox label input[type="checkbox"],
+.radio label input[type="radio"] {
+  display: none;
+}
+
+.checkbox label input[type="checkbox"] + .cr > .cr-icon,
+.radio label input[type="radio"] + .cr > .cr-icon {
+  transform: scale(3) rotateZ(-20deg);
+  opacity: 0;
+  transition: all .3s ease-in;
+}
+
+.checkbox label input[type="checkbox"]:checked + .cr > .cr-icon,
+.radio label input[type="radio"]:checked + .cr > .cr-icon {
+  transform: scale(1) rotateZ(0deg);
+  opacity: 1;
+}
+
+.checkbox label input[type="checkbox"]:disabled + .cr,
+.radio label input[type="radio"]:disabled + .cr {
+  opacity: .5;
 }

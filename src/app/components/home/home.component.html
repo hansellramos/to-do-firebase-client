@@ -1,26 +1,51 @@
-<div *ngIf="user">
-  <span *ngIf="user.email">({{user.email}})</span>
-  <button (click)="signOut()">Sign Out</button>
-</div>
-<div>
-  <h1>
-    Home
-  </h1>
-  <div>
-    <ul *ngIf="user && user.tasks">
-      <li *ngFor="let task of user.tasks">
-        <a [routerLink]="['/task/',task.id]">
-          <span *ngIf="!task.name" class="loading-info">loading task info...</span>
-          <span *ngIf="task.priority">{{task.priority}}</span>
-          <span *ngIf="task.name">{{task.name}}</span>
-          <span *ngIf="task.dueDate">{{task.dueDate | date}}</span>
-        </a>
-        <button (click)="deleteTask(task)">Delete</button>
-        <button (click)="editTask(task)">Edit</button>
+<nav class="home navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <a class="navbar-brand" [routerLink]="['/home']">To-Do App</a>
+    </div>
+
+    <ul class="nav navbar-nav navbar-right">
+      <li>
+        <span class="navbar-text" *ngIf="user && user.email">({{user.email}})</span>
+      </li>
+      <li>
+        <button class="btn btn-default navbar-btn" (click)="signOut()">
+          <span>Sign Out</span>
+          <i class="fa fa-sign-out"></i>
+        </button>
+      </li>
+      <li role="separator" class="divider"></li>
+    </ul>
+
+  </div>
+</nav>
+
+<div class="container home">
+  <div class="card card-container">
+    <h2 class='signin-title text-center'>
+      <span>My Tasks</span>
+      <div class="pull-right">
+        <button *ngIf="!showingNewTaskForm" type="button" (click)="showNewTaskForm()" class="btn btn-circle btn-lg btn-primary">
+          <i class="fa fa-plus"></i>
+        </button>
+      </div>
+    </h2>
+    <hr>
+    <ul *ngIf="user && user.tasks" class="list-group">
+      <li *ngFor="let task of user.tasks" class="list-group-item">
+        <app-task-detail [task]="task" (onSelected)="editTask(task)"></app-task-detail>
+        <!--<a [routerLink]="['/task/',task.id]">-->
+          <!--<span *ngIf="!task.name" class="loading-info">loading task info...</span>-->
+          <!--<span *ngIf="task.priority">{{task.priority}}</span>-->
+          <!--<span *ngIf="task.name">{{task.name}}</span>-->
+          <!--<span *ngIf="task.dueDate">{{task.dueDate | date}}</span>-->
+        <!--</a>-->
+        <!--<button (click)="deleteTask(task)">Delete</button>-->
+        <!--<button (click)="editTask(task)">Edit</button>-->
       </li>
     </ul>
     <app-task-new *ngIf="showingNewTaskForm" (onCancel)="hideNewTaskForm()"></app-task-new>
     <app-task-edit *ngIf="selectedTask" [task]="selectedTask" (onCancel)="cancelEditTask()"></app-task-edit>
-    <button *ngIf="!showingNewTaskForm" type="button" (click)="showNewTaskForm()">New Task</button>
   </div>
 </div>

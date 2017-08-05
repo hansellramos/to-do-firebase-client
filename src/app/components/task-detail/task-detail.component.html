@@ -1,4 +1,17 @@
-<p>
-  task-detail works!
-</p>
-<a [routerLink]="['/home']">Home</a>
+<div class="task-detail row">
+  <div class="col-sm-2">
+    <div class="checkbox">
+      <label style="font-size: 2em">
+        <input type="checkbox" value="" checked>
+        <span class="cr"><i class="cr-icon fa fa-check"></i></span>
+      </label>
+    </div>
+  </div>
+  <div class="col-sm-9" (click)="select()">
+    <span class="task-name">{{task.name}}</span><br />
+    <span class="task-due-date">{{task.dueDate | date}}</span>
+  </div>
+  <div class="col-sm-1" (click)="select()">
+    <span class="badge">{{task.priority}}</span>
+  </div>
+</div>
