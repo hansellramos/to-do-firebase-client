@@ -35,7 +35,7 @@ export class TaskNewComponent implements OnInit {
               tasks.push({id: savedItem.key});
               this.userService.update(localStorage.uid, {tasks: tasks})
                 .then(() => {
-                  this.clear();
+                  this.cancel();
                 })
                 .catch(() => {
                   alert('Error to create user');

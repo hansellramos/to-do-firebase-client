@@ -1,28 +1,63 @@
-<h2>
-  Edit Task {{task.name}}
-</h2>
 <form (submit)="save(); $event.stopPropagation();">
-  <div>
-    <label>Name</label>
-    <input type="text" name="name" [(ngModel)]="editableTask.name" required="true">
+<div class="card card-container-full">
+  <div class="card-header">
+    <h1>Edit Task {{task.name}}</h1>
   </div>
-  <div>
-    <label>Due Date</label>
-    <input type="date" name="dueDate" [(ngModel)]="editableTask.dueDate" required>
+  <div class="card-body">
+
+    <div class="form">
+      <span class="reauth-email"></span>
+      <p class="input-title">Name</p>
+      <input type="text" class="signin-box" placeholder="Task name" name="name" autofocus [(ngModel)]="editableTask.name" required="true">
+
+      <span class="reauth-email"></span>
+      <p class="input-title">Due Date</p>
+      <input type="date" class="signin-box" placeholder="Due Date" name="name" autofocus [(ngModel)]="editableTask.dueDate" required>
+
+      <span class="reauth-email"></span>
+      <p class="input-title">Priority</p>
+      <div class="radio">
+        <label style="font-size: 2em">
+          <input type="radio" value="1" name="priority" [ngClass]="{'checked': editableTask.priority == 1}" [(ngModel)]="editableTask.priority">
+          <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+          <span>
+            <i class="fa fa-star"></i>
+          </span>
+        </label>
+      </div>
+      <div class="radio">
+        <label style="font-size: 2em">
+          <input type="radio" value="2" name="priority" [ngClass]="{'checked': editableTask.priority == 2}" [(ngModel)]="editableTask.priority">
+          <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+          <span>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </span>
+        </label>
+      </div>
+      <div class="radio">
+        <label style="font-size: 2em">
+          <input type="radio" value="3" name="priority" [ngClass]="{'checked': editableTask.priority == 3}" [(ngModel)]="editableTask.priority">
+          <span class="cr"><i class="cr-icon fa fa-circle"></i></span>
+          <span>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+            <i class="fa fa-star"></i>
+          </span>
+        </label>
+      </div>
+
+    </div>
+
   </div>
-  <div>
-    <ul>
-      <li>
-        <label>1</label>
-        <input type="radio" value="1" name="priority" [(ngModel)]="editableTask.priority" required></li>
-      <li>
-        <label>2</label>
-        <input type="radio" value="2" name="priority" [(ngModel)]="editableTask.priority" required></li>
-      <li>
-        <label>3</label>
-        <input type="radio" value="3" name="priority" [(ngModel)]="editableTask.priority" required></li>
-    </ul>
+  <div class="card-footer">
+    <div class="pull-left">
+      <button class="btn btn-danger  btn-lg" type="button" (click)="delete()">Delete</button>
+    </div>
+    <div class="pull-right">
+      <button class="btn btn-primary  btn-lg" type="submit">Save</button>
+      <button type="button" class="btn btn-default btn-lg" (click)="cancel()">Back</button>
+    </div>
   </div>
-  <input type="submit" value="Save">
-  <input type="button" value="Cancel" (click)="cancel()">
-</form>
+</div>
+  </form>

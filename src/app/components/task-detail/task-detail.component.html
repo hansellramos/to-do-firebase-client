@@ -1,5 +1,5 @@
 <div class="task-detail row">
-  <div class="col-sm-2">
+  <div class="col-sm-2 text-center-xs">
     <div class="checkbox">
       <label style="font-size: 2em">
         <input type="checkbox" value="" checked>
@@ -7,11 +7,19 @@
       </label>
     </div>
   </div>
-  <div class="col-sm-9" (click)="select()">
+  <div class="col-sm-9 text-center-xs" (click)="select()">
     <span class="task-name">{{task.name}}</span><br />
     <span class="task-due-date">{{task.dueDate | date}}</span>
   </div>
-  <div class="col-sm-1" (click)="select()">
-    <span class="badge">{{task.priority}}</span>
+  <div class="col-sm-1 text-center-xs" (click)="select()">
+    <div class="block inline-block-sm">
+      <i class="fa fa-star"></i>
+    </div>
+    <div class="block inline-block-sm">
+      <i *ngIf="task.priority >= 2" class="fa fa-star"></i>
+    </div>
+    <div class="block inline-block-sm">
+      <i *ngIf="task.priority >= 3" class="fa fa-star"></i>
+    </div>
   </div>
 </div>

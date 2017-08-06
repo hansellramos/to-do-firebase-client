@@ -12,6 +12,7 @@ import {ActivatedRoute} from '@angular/router';
 export class TaskEditComponent implements OnInit {
 
   @Output() onCancel = new EventEmitter<boolean>();
+  @Output() onDelete = new EventEmitter<boolean>();
 
   @Input('task')
   public task: Task;
@@ -40,6 +41,11 @@ export class TaskEditComponent implements OnInit {
 
   cancel() {
     this.onCancel.emit(true);
+  }
+
+  delete() {
+    this.onDelete.emit(true);
+    this.cancel();
   }
 
 }

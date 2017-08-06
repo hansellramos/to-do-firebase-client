@@ -3,7 +3,7 @@
   <div class="card card-container">
     <h2 class='signin-title text-center'>Sign In</h2>
     <hr>
-    <form class="form-signin" (submit)="signInWithEmailAndPassword()">
+    <form class="form" (submit)="signInWithEmailAndPassword()">
       <span class="reauth-email"></span>
       <p class="input-title">Email</p>
       <input type="text" id="inputEmail" class="signin-box" placeholder="Your e-mail" name="email" required autofocus [(ngModel)]="user.email">
