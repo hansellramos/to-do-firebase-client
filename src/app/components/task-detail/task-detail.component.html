@@ -2,14 +2,15 @@
   <div class="col-sm-2 text-center-xs">
     <div class="checkbox">
       <label style="font-size: 2em">
-        <input type="checkbox" value="" checked>
+        <input type="checkbox" value="" [(ngModel)]="task.completed" (change)="updateTask()">
         <span class="cr"><i class="cr-icon fa fa-check"></i></span>
       </label>
     </div>
   </div>
   <div class="col-sm-9 text-center-xs" (click)="select()">
+    <i *ngIf="nextToDue" class="fa fa-warning animated flash infinite text-warning"></i>
     <span class="task-name">{{task.name}}</span><br />
-    <span class="task-due-date">{{task.dueDate | date}}</span>
+    <span class="task-due-date" [ngClass]="{'animated flash': nextToDue}">{{task.dueDate | date}}</span>
   </div>
   <div class="col-sm-1 text-center-xs" (click)="select()">
     <div class="block inline-block-sm">

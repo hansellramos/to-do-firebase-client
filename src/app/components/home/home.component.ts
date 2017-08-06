@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   public isAuthenticated = false;
   public showingNewTaskForm = false;
   public selectedTask: Task;
+  public filters: any;
 
   constructor(
     private authService: AuthService
@@ -28,6 +29,9 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.filters = {
+      closeToExpire: false
+    };
     this.authService.auth.auth.onAuthStateChanged(user => {
         this.isAuthenticated = !!user;
         this.updateCurrentUserInfo();
@@ -99,6 +103,23 @@ export class HomeComponent implements OnInit {
       .then(() => {
         this.router.navigate(['/signin']);
       });
+  }
+
+  checkFilter(item: Task): boolean {
+    if (this.filters.closeToExpire && this.isTaskNextToDue(item)) {
+      return true;
+    }
+    return !this.filters.closeToExpire;
+  }
+
+  public isTaskNextToDue(task: Task): boolean {
+    if (task) {
+      const dueDate = new Date(task.dueDate);
+      return !task.completed
+        && (new Date()).getTime() + (7 * 24 * 60 * 60 * 1000) >= dueDate.getTime();
+    } else {
+      return false;
+    }
   }
 
 }
