@@ -1,0 +1,211 @@
+{
+  "tasks" : {
+    "-KqeT2Qdwq5CIGvg5VPF" : {
+      "completed" : true,
+      "created" : 1501803591773,
+      "dueDate" : "2017-08-17",
+      "id" : "-KqeT2Qdwq5CIGvg5VPF",
+      "key" : "-KqeT2Qdwq5CIGvg5VPF",
+      "name" : "Task one",
+      "owner" : "YOCjhrpAXyYnc3JnMfqlNNh4ISB2",
+      "priority" : "3",
+      "updated" : 1501991809760
+    },
+    "-KqkMtGUsJeib-UDKUYo" : {
+      "completed" : true,
+      "created" : 1501902643048,
+      "dueDate" : "2017-08-07",
+      "id" : "-KqkMtGUsJeib-UDKUYo",
+      "key" : "",
+      "name" : "Mailen",
+      "owner" : "YOCjhrpAXyYnc3JnMfqlNNh4ISB2",
+      "priority" : "1",
+      "updated" : 1501902643048
+    },
+    "-KqkMvtlhFciUwrROPa4" : {
+      "completed" : false,
+      "created" : 1501902651929,
+      "dueDate" : "2017-08-19",
+      "id" : "-KqkMvtlhFciUwrROPa4",
+      "key" : "",
+      "name" : "Nidia",
+      "owner" : "YOCjhrpAXyYnc3JnMfqlNNh4ISB2",
+      "priority" : "3",
+      "updated" : 1501902651929
+    },
+    "-KqkQikXYjZFDWuysZzK" : {
+      "completed" : true,
+      "created" : 1501903646883,
+      "dueDate" : "2017-08-09",
+      "id" : "-KqkQikXYjZFDWuysZzK",
+      "name" : "otra",
+      "owner" : "YOCjhrpAXyYnc3JnMfqlNNh4ISB2",
+      "priority" : "1",
+      "updated" : 1501903646883
+    },
+    "-KqkRK8SuNTAMH69PNSt" : {
+      "completed" : true,
+      "created" : 1501903804171,
+      "dueDate" : "2017-08-17",
+      "id" : "-KqkRK8SuNTAMH69PNSt",
+      "name" : "una vez mas",
+      "owner" : "YOCjhrpAXyYnc3JnMfqlNNh4ISB2",
+      "priority" : "2",
+      "updated" : 1501978723757
+    },
+    "-KqkiETezi0CgfoaB2gh" : {
+      "completed" : false,
+      "created" : 1501908499729,
+      "dueDate" : "2017-08-05",
+      "id" : "-KqkiETezi0CgfoaB2gh",
+      "name" : "task 1",
+      "owner" : "uUyFpDfY62c2D1PjsdKsZ1EKYX42",
+      "priority" : "1",
+      "updated" : 1501908499729
+    },
+    "-KqkiGWLaj4UO9x-jLCo" : {
+      "completed" : false,
+      "created" : 1501908507729,
+      "dueDate" : "2017-08-06",
+      "id" : "-KqkiGWLaj4UO9x-jLCo",
+      "name" : "task 2",
+      "owner" : "uUyFpDfY62c2D1PjsdKsZ1EKYX42",
+      "priority" : "2",
+      "updated" : 1501908507729
+    },
+    "-KqkiIxtBqgaR-kAtc8S" : {
+      "completed" : true,
+      "created" : 1501908517076,
+      "dueDate" : "2017-08-08",
+      "id" : "-KqkiIxtBqgaR-kAtc8S",
+      "name" : "task three",
+      "owner" : "uUyFpDfY62c2D1PjsdKsZ1EKYX42",
+      "priority" : "3",
+      "updated" : 1501908537905
+    },
+    "-KqkiR5qvpZCqoom9r6a" : {
+      "completed" : true,
+      "created" : 1501908550331,
+      "dueDate" : "2017-08-09",
+      "id" : "-KqkiR5qvpZCqoom9r6a",
+      "name" : "task to delete",
+      "owner" : "uUyFpDfY62c2D1PjsdKsZ1EKYX42",
+      "priority" : "2",
+      "updated" : 1501908550331
+    },
+    "-Kqou94DjfUMb-_mHxlG" : {
+      "completed" : false,
+      "created" : 1501978732148,
+      "dueDate" : "2017-08-08",
+      "id" : "-Kqou94DjfUMb-_mHxlG",
+      "name" : "1",
+      "owner" : "YOCjhrpAXyYnc3JnMfqlNNh4ISB2",
+      "priority" : "2",
+      "updated" : 1501978732148
+    },
+    "-KqoungKNTYti0OaE-qO" : {
+      "completed" : false,
+      "created" : 1501978902332,
+      "dueDate" : "2017-07-28",
+      "id" : "-KqoungKNTYti0OaE-qO",
+      "name" : "Hola",
+      "owner" : "YOCjhrpAXyYnc3JnMfqlNNh4ISB2",
+      "priority" : "3",
+      "updated" : 1501979117756
+    },
+    "-Kqov6mNjPiB66mw6dUA" : {
+      "completed" : true,
+      "created" : 1501978984533,
+      "dueDate" : "2017-08-17",
+      "id" : "-Kqov6mNjPiB66mw6dUA",
+      "name" : "une",
+      "owner" : "YOCjhrpAXyYnc3JnMfqlNNh4ISB2",
+      "priority" : "1",
+      "updated" : 1501978984533
+    },
+    "-KqpgCvHQn92GWkiNeyr" : {
+      "completed" : false,
+      "created" : 1501991857353,
+      "dueDate" : "2017-08-10",
+      "id" : "-KqpgCvHQn92GWkiNeyr",
+      "name" : "Otra",
+      "owner" : "YOCjhrpAXyYnc3JnMfqlNNh4ISB2",
+      "priority" : 1,
+      "updated" : 1501991857353
+    },
+    "-Kr1UqLSEUkwGlHMynVz" : {
+      "completed" : false,
+      "created" : 1502206719778,
+      "dueDate" : "2017-08-11",
+      "id" : "-Kr1UqLSEUkwGlHMynVz",
+      "name" : "Mayha",
+      "owner" : "YOCjhrpAXyYnc3JnMfqlNNh4ISB2",
+      "priority" : "2",
+      "updated" : 1502206719778
+    }
+  },
+  "users" : {
+    "TLRbIph8YfVOMe0sybXLUrUjnJF2" : {
+      "created" : 1501908618972,
+      "email" : "admin2@localhost.com",
+      "id" : "TLRbIph8YfVOMe0sybXLUrUjnJF2",
+      "updated" : 1501908618972
+    },
+    "V44GTEUQTbZfEFigGL4dKIbqISA3" : {
+      "created" : 1501950103765,
+      "email" : "hansell.ramos@outlook.com",
+      "id" : "V44GTEUQTbZfEFigGL4dKIbqISA3",
+      "updated" : 1501950103765
+    },
+    "YOCjhrpAXyYnc3JnMfqlNNh4ISB2" : {
+      "email" : "hansell.ramos@gmail.com",
+      "id" : "YOCjhrpAXyYnc3JnMfqlNNh4ISB2",
+      "tasks" : [ {
+        "id" : "-KqeT2Qdwq5CIGvg5VPF"
+      }, {
+        "id" : "-KqkMtGUsJeib-UDKUYo"
+      }, {
+        "id" : "-KqkRK8SuNTAMH69PNSt"
+      }, {
+        "id" : "-KqoungKNTYti0OaE-qO"
+      }, {
+        "id" : "-Kqov6mNjPiB66mw6dUA"
+      }, {
+        "id" : "-Kr1UqLSEUkwGlHMynVz"
+      } ],
+      "uid" : "YOCjhrpAXyYnc3JnMfqlNNh4ISB2",
+      "updated" : 1501798910075
+    },
+    "ZT7RxtIdrEc6UBdn01u7eztHz183" : {
+      "created" : 1501945686738,
+      "email" : "admin10@localhost.com",
+      "id" : "ZT7RxtIdrEc6UBdn01u7eztHz183",
+      "updated" : 1501945686738
+    },
+    "kynW3LFx8LTCxS3LD5huBEqdOdJ3" : {
+      "created" : 1501908963153,
+      "email" : "admin4@localhost.com",
+      "id" : "kynW3LFx8LTCxS3LD5huBEqdOdJ3",
+      "updated" : 1501908963153
+    },
+    "uUyFpDfY62c2D1PjsdKsZ1EKYX42" : {
+      "created" : 1501906231369,
+      "email" : "admin@localhost.com",
+      "id" : "uUyFpDfY62c2D1PjsdKsZ1EKYX42",
+      "tasks" : [ {
+        "id" : "-KqkiETezi0CgfoaB2gh"
+      }, {
+        "id" : "-KqkiGWLaj4UO9x-jLCo"
+      }, {
+        "id" : "-KqkiIxtBqgaR-kAtc8S"
+      } ],
+      "updated" : 1501906231369
+    },
+    "xOfDt6aGc3h6UlxAKjGQmeB5F2W2" : {
+      "created" : 1501908857679,
+      "email" : "admin3@localhost.com",
+      "id" : "xOfDt6aGc3h6UlxAKjGQmeB5F2W2",
+      "updated" : 1501908857679
+    }
+  }
+}
