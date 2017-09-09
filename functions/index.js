@@ -30,15 +30,3 @@ exports.onTaskUpdate = functions.database.ref('/tasks/{taskId}').onUpdate(event 
     return;
   }
 });
-
-exports.onCreateUser = functions.auth.user().onCreate(event => {
-  const user = event.data;
-  const userData = {
-    created: (new Date().getTime()),
-    modified: (new Date().getTime()),
-    email: user.email,
-    id: user.uid
-  };
-  admin.database().ref('users/'+user.uid).push(userData)
-});
-
