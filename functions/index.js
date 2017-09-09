@@ -73,6 +73,42 @@ exports.DatabaseOnUserModified = functions.database.ref('/users/{userId}')
   });
 */
 
+exports.DatabaseOnUserModified = functions.database.ref('/users/{userId}')
+  .onUpdate(event => {
+    const userId = event.params.userId;
+    if (
+      !event.data.current.child('id').val()
+      || event.data.current.child('id').val() !== userId
+    ) {
+      admin.database().ref('users/'+userId+'/id').set(userId);
+    }
+    return;
+  });
+
+exports.DatabaseOnTaskModified = functions.database.ref('/tasks/{taskId}')
+  .onUpdate(event => {
+    const taskId = event.params.taskId;
+    if (
+      !event.data.current.child('id').val()
+      || event.data.current.child('id').val() !== taskId
+    ) {
+      admin.database().ref('tasks/'+taskId+'/id').set(taskId);
+    }
+    return;
+  });
+
+exports.DatabaseOnChecklistModified = functions.database.ref('/checklists/{checklistId}')
+  .onUpdate(event => {
+    const checklistId = event.params.checklistId;
+    if (
+      !event.data.current.child('id').val()
+      || event.data.current.child('id').val() !== checklistId
+    ) {
+      admin.database().ref('checklists/'+checklistId+'/id').set(checklistId);
+    }
+    return;
+  });
+
 exports.AuthOnUserCreated = functions.auth.user()
   .onCreate(event => {
     const user = event.data;
