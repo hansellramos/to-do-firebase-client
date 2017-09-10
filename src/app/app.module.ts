@@ -22,6 +22,7 @@ import { Routing } from './app.routing';
 
 import { AuthService } from './services/auth.service';
 import { UserService } from './services/user.service';
+import { ChecklistService } from './services/checklist.service';
 import { TaskService } from './services/task.service';
 import { TaskNewComponent } from './components/task-new/task-new.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
@@ -48,6 +49,7 @@ import { TaskEditComponent } from './components/task-edit/task-edit.component';
   providers: [
       AuthService
     , UserService
+    , ChecklistService
     , TaskService
     , AuthGuard
   ],

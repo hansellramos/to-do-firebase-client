@@ -27,8 +27,8 @@
       </div>
     </h2>
     <hr>
-    <ul *ngIf="user && user.tasks" class="list-group">
-      <li *ngFor="let task of user.tasks" class="list-group-item" [ngClass]="{'none': !checkFilter(task)}">
+    <ul *ngIf="selectedChecklist && selectedChecklist.tasks" class="list-group">
+      <li *ngFor="let task of selectedChecklist.tasks" class="list-group-item" [ngClass]="{'none': !checkFilter(task)}">
         <app-task-detail [task]="task" (onSelected)="editTask(task)"></app-task-detail>
       </li>
     </ul>
@@ -42,7 +42,7 @@
         </label>
       </div>
     </div>
-    <app-task-new *ngIf="showingNewTaskForm" (onCancel)="hideNewTaskForm()"></app-task-new>
+    <app-task-new *ngIf="showingNewTaskForm" [checklist]="selectedChecklist" (onCancel)="hideNewTaskForm($event)"></app-task-new>
     <app-task-edit *ngIf="selectedTask" [task]="selectedTask" (onCancel)="cancelEditTask()" (onDelete)="deleteTask(selectedTask)"></app-task-edit>
   </div>
 </div>

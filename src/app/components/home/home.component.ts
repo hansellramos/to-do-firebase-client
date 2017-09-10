@@ -5,6 +5,8 @@ import {User} from '../../models/user';
 import {Router} from '@angular/router';
 import {Task} from '../../models/task';
 import {TaskService} from '../../services/task.service';
+import {Checklist} from '../../models/checklist';
+import {ChecklistService} from '../../services/checklist.service';
 
 @Component({
   selector: 'app-home',
@@ -19,11 +21,13 @@ export class HomeComponent implements OnInit {
   public isAuthenticated = false;
   public showingNewTaskForm = false;
   public selectedTask: Task;
+  public selectedChecklist: Checklist;
   public filters: any;
 
   constructor(
     private authService: AuthService
     , private userService: UserService
+    , private checklistService: ChecklistService
     , private taskService: TaskService
     , private router: Router
   ) { }
@@ -44,9 +48,9 @@ export class HomeComponent implements OnInit {
       const user = this.authService.getCurrentUser();
       this.userService.one(user.uid).subscribe(remoteUser => {
         if (remoteUser) {
-          this.user = new User(user.uid, remoteUser.email, remoteUser.tasks);
+          this.user = new User(user.uid, remoteUser.email, remoteUser.checklists, remoteUser.created, remoteUser.modified);
           localStorage.setItem('uid', user.uid);
-          this.getUserTasks();
+          this.getUserChecklists();
         }
       });
     } else {
@@ -55,38 +59,73 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  getUserTasks() {
-    if (this.user.tasks && this.user.tasks.length > 0) {
-      for (const task of this.user.tasks) {
+  getUserChecklists() {
+    if (this.user.checklists && this.user.checklists.length > 0) {
+      for (const checklist of this.user.checklists) {
+        this.checklistService.one(checklist.id)
+          .subscribe((item: Checklist) => {
+            this.replaceChecklist(checklist.id, item);
+            this.setLastSelectedChecklist();
+          });
+      }
+    }
+
+  }
+
+  private replaceChecklist(id: string, checklist: Checklist) {
+    for (const index in this.user.checklists) {
+      if (this.user.checklists[index].id === id) {
+        this.user.checklists[index] = checklist;
+      }
+    }
+  }
+
+  private setLastSelectedChecklist() {
+    if (this.user.checklists && this.user.checklists.length > 0) {
+      const selected = this.user.checklists[0];
+      if (selected.owner) {
+        this.selectedChecklist = selected;
+        this.getChecklistsTasks();
+      }
+    }
+  }
+
+  getChecklistsTasks() {
+    if (this.selectedChecklist.tasks && this.selectedChecklist.tasks.length > 0) {
+      for (const task of this.selectedChecklist.tasks) {
         this.taskService.one(task.id)
           .subscribe((item: Task) => {
-            this.replaceProject(task.id, item);
+            this.replaceSelectedChecklistTask(task.id, item);
           });
       }
     }
   }
 
-  private replaceProject(id: string, task: Task) {
-    for (const index in this.user.tasks) {
-      if (this.user.tasks[index].id === id) {
-        this.user.tasks[index] = task;
+  private replaceSelectedChecklistTask(id: string, task: Task) {
+    for (const index in this.selectedChecklist.tasks) {
+      if (this.selectedChecklist.tasks[index].id === id) {
+        this.selectedChecklist.tasks[index] = task;
       }
     }
   }
 
   deleteTask(item: Task) {
-    this.user.tasks.splice(this.user.tasks.indexOf(item), 1);
-    const tasks = this.user.tasks.map((value: Task) => {
-      return { id: value.id };
+    this.selectedChecklist.tasks.splice(this.selectedChecklist.tasks.indexOf(item), 1);
+    const tasks = this.selectedChecklist.tasks.map((value: Task) => {
+      return new Task(value.id);
     });
-    this.userService.update(this.user.id, {tasks: tasks});
+    this.selectedChecklist.tasks = tasks;
+    this.checklistService.update(this.selectedChecklist);
   }
 
   showNewTaskForm() {
     this.showingNewTaskForm = true;
   }
 
-  hideNewTaskForm() {
+  hideNewTaskForm(event) {
+    if (event) {
+      this.getChecklistsTasks();
+    }
     this.showingNewTaskForm = false;
   }
 
