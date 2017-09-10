@@ -94,16 +94,19 @@ export class HomeComponent implements OnInit {
     if (this.selectedChecklist.tasks && this.selectedChecklist.tasks.length > 0) {
       for (const task of this.selectedChecklist.tasks) {
         this.taskService.one(task.id)
-          .subscribe((item: Task) => {
+          .subscribe((item) => {
             this.replaceSelectedChecklistTask(task.id, item);
           });
       }
     }
   }
 
-  private replaceSelectedChecklistTask(id: string, task: Task) {
+  private replaceSelectedChecklistTask(id: string, task) {
     for (const index in this.selectedChecklist.tasks) {
       if (this.selectedChecklist.tasks[index].id === id) {
+        if (task.id === '') {
+          task.id = task.$key;
+        }
         this.selectedChecklist.tasks[index] = task;
       }
     }

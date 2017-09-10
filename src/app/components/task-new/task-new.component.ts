@@ -46,7 +46,6 @@ export class TaskNewComponent implements OnInit {
               tasks.push({id: savedTask.key});
               this.checklistService.update(remoteChecklist)
                 .then(() => {
-                  // TODO: Set id in home selectedChecklist tasks when a new task is created
                   this.onCancel.emit(true);
                   this.cancel();
                 })
