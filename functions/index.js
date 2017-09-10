@@ -4,26 +4,6 @@ const admin = require('firebase-admin');
 admin.initializeApp(functions.config().firebase);
 
 /*
-exports.DatabaseOnUserCreated = functions.database.ref('/users/{userId}')
-  .onCreate(event => {
-    var timestamp = new Date().getTime();
-    return event.data.ref.update({created: timestamp, modified: timestamp, id: event.params.userId});
-  });
-
-exports.DatabaseOnTaskCreated = functions.database.ref('/tasks/{taskId}')
-  .onCreate(event => {
-    var timestamp = new Date().getTime();
-    return event.data.ref.update({created: timestamp, modified: timestamp, id: event.params.taskId});
-  });
-
-exports.DatabaseOnChecklistCreated = functions.database.ref('/checklist/{checklistId}')
-  .onCreate(event => {
-    var timestamp = new Date().getTime();
-    return event.data.ref.update({created: timestamp, modified: timestamp, id: event.params.checklistId});
-  });
-*/
-
-/*
 exports.DatabaseOnTaskModified = functions.database.ref('/tasks/{taskId}')
   .onUpdate(event => {
     var current = {
@@ -83,6 +63,18 @@ exports.DatabaseOnUserModified = functions.database.ref('/users/{userId}')
       admin.database().ref('users/'+userId+'/id').set(userId);
     }
     return;
+  });
+
+exports.DatabaseOnChecklistCreated = functions.database.ref('/checklist/{checklistId}')
+  .onCreate(event => {
+    var timestamp = new Date().getTime();
+    return event.data.ref.update({created: timestamp, modified: timestamp, id: event.params.checklistId});
+  });
+
+exports.DatabaseOnTaskCreated = functions.database.ref('/tasks/{taskId}')
+  .onCreate(event => {
+    var timestamp = new Date().getTime();
+    return event.data.ref.update({created: timestamp, modified: timestamp, id: event.params.taskId});
   });
 
 exports.DatabaseOnTaskModified = functions.database.ref('/tasks/{taskId}')
